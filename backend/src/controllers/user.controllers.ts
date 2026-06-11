@@ -1,7 +1,7 @@
-import Send from '@utils/response.utils'
-import {prisma} from 'db'
-import {Request, Response} from 'express'
-import { send } from 'process'
+import Send from '../utils/response.utils.js'
+import {prisma} from '../db.js'
+import {type Request, type Response} from 'express'
+
 
 class UserController {
     static getUser = async (req: Request, res: Response) => {
@@ -15,7 +15,7 @@ class UserController {
                     username: true,
                     email: true,
                     createdAt: true,
-                    updatedAt: true
+                    updateAt: true
                 }
             })
             if (!user){

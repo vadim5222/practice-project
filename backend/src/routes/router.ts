@@ -1,4 +1,4 @@
-import { Router, RequestHandler } from "express";
+import { Router, type RequestHandler } from "express";
 
 type RouterMethod = 'get' | 'post' | 'put' | 'delete' | 'patch'
 

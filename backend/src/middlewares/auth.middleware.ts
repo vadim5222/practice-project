@@ -1,6 +1,6 @@
-import authConfig from "@config/auth.config.js";
-import Send from '@utils/response.utils'
-import { NextFunction , Request , Response } from  "express" ; 
+import authConfig from "../config/auth.config.js";
+import Send from '../utils/response.utils.js'
+import { type NextFunction , type Request , type Response } from  "express" ; 
 import jwt from  "jsonwebtoken" ; 
 
 export interface DecodedToken {

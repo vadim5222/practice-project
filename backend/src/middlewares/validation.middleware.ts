@@ -1,6 +1,6 @@
-import Send from '@utils/response.utils'
-import { NextFunction, Request, Response } from 'express'
-import { ZodError, ZodSchema } from 'zod'
+import Send from '../utils/response.utils.js'
+import { type NextFunction, type Request, type Response } from 'express'
+import { ZodError, type ZodSchema } from 'zod'
 
 class ValidationMiddleware {
     static validateBody (schema: ZodSchema) {

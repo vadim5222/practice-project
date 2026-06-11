@@ -1,11 +1,11 @@
-import Send from  "@utils/response.utils" ; 
-import {prisma} from 'db'
-import {Request, Response} from 'express'
-import authSchema from 'validators/auth.schema'
+import Send from  "../utils/response.utils.js" ; 
+import {prisma} from '../db.js'
+import {type Request, type Response} from 'express'
+import authSchema from '../validations/auth.schema.js'
 import bcrypt from "bcryptjs";
 import { z } from 'zod'
 import jwt  from "jsonwebtoken";
-import authConfig from "@config/auth.config.js";
+import authConfig from "../config/auth.config.js";
 
 
 class AuthController {
@@ -119,7 +119,7 @@ class AuthController {
 
     static refreshToken = async (req: Request, res: Response) => {
         try{
-            const userId = (req as any).user?.userId
+            const userId = (req as any).userId
             const refreshToken = req.cookies.refreshToken
             const user = await prisma.user.findUnique({
                 where : {id: userId}
