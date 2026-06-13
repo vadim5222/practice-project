@@ -10,7 +10,7 @@ import LoginPage from './pages/LoginPage.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <h1>Привет</h1>
+    element: <App/>
   },
   {
     path: "/register",
