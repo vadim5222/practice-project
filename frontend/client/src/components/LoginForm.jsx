@@ -3,11 +3,13 @@ import { Link } from 'react-router'
 import AxiosRequest from '../utils/AxiosRequest'
 import { redirect } from 'react-router'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 
 const LoginForm = () => {
 
     const { register, handleSubmit } = useForm()
     const [user, setUser] = useState(null)
+    const navigate = useNavigate()
 
 
     const onLogin = async (data) => {
@@ -19,18 +21,13 @@ const LoginForm = () => {
                 withCredentials: true
             })
             console.log(response)
+            navigate('/')
         } catch (e) {
             console.log(e)
         }
     }
 
-    useEffect(() => {
-        AxiosRequest.get('api/user/info', {
-            withCredentials: true
-        })
-            .then(res => { setUser(res.data.data.user) })
-            .catch(() => setUser(null))
-    }, [user])
+
 
 
     return (

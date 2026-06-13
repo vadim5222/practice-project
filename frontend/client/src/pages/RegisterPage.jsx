@@ -2,11 +2,9 @@ import RegisterForm from "../components/RegisterForm"
 
 const RegisterPage = () => {
     return (
-        <div>
-            <div className="p-2 flex items-center">
+            <div className="text-gray-300">
                 <RegisterForm />
             </div>
-        </div>
     )
 }
 

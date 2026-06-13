@@ -1,31 +1,31 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import AxiosRequest from './utils/AxiosRequest'
-import { useNavigate } from 'react-router'
+import { Link } from 'react-router'
 
 function App() {
 
   const [user, setUser] = useState(null)
-  const navigate = useNavigate()
 
   useEffect(() => {
     AxiosRequest.get('api/user/info', {
       withCredentials: true
     })
-    .then(res => {
-      setUser(res.data.data.user)
-    })
-    .catch(() => setUser(null))
+      .then(res => {
+        setUser(res.data.data.user)
+      })
+      .catch(() => setUser(null))
   }, [])
 
 
-  const Logout = async(data) => {
-    try{
-      const response = await AxiosRequest.post('api/auth/logout',{},{
+  const Logout = async (data) => {
+    try {
+      const response = await AxiosRequest.post('api/auth/logout', {}, {
         withCredentials: true
       })
+      setUser(null)
       console.log(response)
-    }catch(e){
+    } catch (e) {
       console.log(e)
     }
   }
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <h1>{user ? `Добро пожаловать ${user.username}` : 'Чтобы пользоваться нашим сервисом авторизуйтесь'}</h1>
+      <h1>{user ? `Добро пожаловать ${user.username}` : <Link to='/login'>Авторизуйтесь</Link>}</h1>
       {user && <button onClick={Logout}>Выйти</button>}
     </>
   )
