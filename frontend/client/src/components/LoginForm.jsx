@@ -2,13 +2,11 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router'
 import AxiosRequest from '../utils/AxiosRequest'
 import { redirect } from 'react-router'
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 const LoginForm = () => {
 
     const { register, handleSubmit } = useForm()
-    const [user, setUser] = useState(null)
     const navigate = useNavigate()
 
 

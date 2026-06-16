@@ -37,24 +37,25 @@ const ASidebar = () => {
             }}>
                 <Menu>
                     <SubMenu label={
-                        user ? user?.username : <Link to='/login'>Авторизируйтесь</Link>
+                        user ? user?.username : 'Добро пожаловать Гость'
 
                     }>
                         <MenuItem component={<Link to='/profile' />}>Профиль</MenuItem>
                         <MenuItem>Настройки</MenuItem>
                         <MenuItem>
-                            <button>
-                                <div className='flex items-center gap-5'>
+                            <div>
+                                <button onClick={Logout} className='flex items-center gap-6 cursor-pointer'>
                                     <img className='w-5' src="/logout.png" alt="logout" />
                                     <p>Выйти</p>
-                                </div>
-                            </button>
+                                </button>
+                            </div>
                         </MenuItem>
                     </SubMenu>
                     <SubMenu label='Недавнее'>
                         <MenuItem>Пока ниче нету</MenuItem>
                     </SubMenu>
                 </Menu>
+
             </Sidebar>
         </>
     )
