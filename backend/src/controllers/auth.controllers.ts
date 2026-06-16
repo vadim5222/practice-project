@@ -38,7 +38,7 @@ class AuthController {
 
             await prisma.user.update({
                 where: {email},
-                data : { refreshToken }
+                data : { refreshToken, accessToken}
             })
 
             res.cookie('accessToken', accessToken, {
