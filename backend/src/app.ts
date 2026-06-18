@@ -4,6 +4,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth.router.js";
 import appConfig from "./config/app.config.js";
 import userRoutes from "./routes/user.router.js";
+import aiRouter from "./routes/ai.router.js";
 
 
 class App {
@@ -30,6 +31,7 @@ class App {
     private initRoutes() {
         this.app.use('/api/auth/', authRoutes)
         this.app.use('/api/user/', userRoutes)
+        this.app.use('/api/ai/', aiRouter)
     }
 
     public start() {

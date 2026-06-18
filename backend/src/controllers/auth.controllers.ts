@@ -6,7 +6,9 @@ import bcrypt from "bcryptjs";
 import { z } from 'zod'
 import jwt  from "jsonwebtoken";
 import authConfig from "../config/auth.config.js";
+import pino from 'pino'
 
+const logger = pino()
 
 class AuthController {
     static login = async (req: Request, res: Response) => {
@@ -52,12 +54,11 @@ class AuthController {
                 maxAge: 24 * 60 * 60 * 1000,
                 sameSite: 'strict'
             })
-
-            return Send.success(res, {
+            return Send.success(res,{
                 id: user.id,
                 username: user.username,
                 email: user.email
-            })            
+            })
         }catch(error){
             console.error('Login failed:', error)
             return Send.error(res, null, 'Login failed')
