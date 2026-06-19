@@ -2,12 +2,14 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
 import { useState, useEffect } from 'react'
 import AxiosRequest from '../utils/AxiosRequest'
 import { Link } from 'react-router'
+import Profile from '../pages/Profile'
 
 
 
 const ASidebar = () => {
 
     const [user, setUser] = useState(null)
+    const [view, setView] = useState(false)
 
     useEffect(() => {
         AxiosRequest.get('api/user/info', {
@@ -41,7 +43,9 @@ const ASidebar = () => {
 
                     }>
                         {user ? <div>
-                            <MenuItem component={<Link to='/profile' />}>Профиль</MenuItem>
+                            <MenuItem>
+                                <button className='cursor-pointer' onClick={() => setView(!view)}>Профиль</button>
+                            </MenuItem>
                             <MenuItem>Настройки</MenuItem>
                             <MenuItem>
                                 <div>
@@ -62,8 +66,8 @@ const ASidebar = () => {
                         <MenuItem>Пока ниче нету</MenuItem>
                     </SubMenu>
                 </Menu>
-
             </Sidebar>
+            {view && <Profile/>}
         </>
     )
 }
