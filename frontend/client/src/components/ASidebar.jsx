@@ -40,16 +40,23 @@ const ASidebar = () => {
                         user ? user?.username : 'Добро пожаловать Гость'
 
                     }>
-                        <MenuItem component={<Link to='/profile' />}>Профиль</MenuItem>
-                        <MenuItem>Настройки</MenuItem>
-                        <MenuItem>
+                        {user ? <div>
+                            <MenuItem component={<Link to='/profile' />}>Профиль</MenuItem>
+                            <MenuItem>Настройки</MenuItem>
+                            <MenuItem>
+                                <div>
+                                    <button onClick={Logout} className='flex items-center gap-6 cursor-pointer'>
+                                        <img className='w-5' src="/logout.png" alt="logout" />
+                                        <p>Выйти</p>
+                                    </button>
+                                </div>
+                            </MenuItem>
+                        </div>
+                            :
                             <div>
-                                <button onClick={Logout} className='flex items-center gap-6 cursor-pointer'>
-                                    <img className='w-5' src="/logout.png" alt="logout" />
-                                    <p>Выйти</p>
-                                </button>
-                            </div>
-                        </MenuItem>
+                                <MenuItem component={<Link to='/login' />}>Войти</MenuItem>
+                                <MenuItem component={<Link to='/register' />}>Зарегистрироваться</MenuItem>
+                            </div>}
                     </SubMenu>
                     <SubMenu label='Недавнее'>
                         <MenuItem>Пока ниче нету</MenuItem>
